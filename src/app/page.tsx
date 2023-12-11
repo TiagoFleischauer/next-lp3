@@ -26,7 +26,11 @@ export default function Home() {
       <div className="grid grid-cols-8 gap-4 mt-4">
         {deputados.map((deputado) => {
           return (
-            <Link key={deputado.id} href="/deputado">
+            <Link
+              key={deputado.id}
+              href="/deputado"
+              className="bg-white/5 p-3 rounded-md flex flex-col gap-2 hover:bg-white/10"
+            >
               <Image
                 src="/test.jpg"
                 className="w-full"
