@@ -5,6 +5,7 @@ import { fetchDeputados } from "./utils";
 import { useEffect, useState } from "react";
 import { Deputado } from "./types/deputado";
 import Link from "next/link";
+import { Title } from "./components/Title";
 
 export default function Home() {
   const [deputados, setDeputados] = useState<Deputado[]>([]);
@@ -21,8 +22,8 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-      <h1 className="font-semibold text-3xl mt-5">Deputados</h1>
+    <main className="flex-1 p-6">
+      <Title text="Deputados" />
       <div className="grid grid-cols-8 gap-4 mt-4">
         {deputados.map((deputado) => {
           return (
@@ -46,6 +47,6 @@ export default function Home() {
           );
         })}
       </div>
-    </>
+    </main>
   );
 }
