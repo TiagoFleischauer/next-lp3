@@ -1,8 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import { Button } from "../components/Button";
 import { Title } from "../components/Title";
+import { useSearchParams } from "next/navigation";
 
 export default function Deputado() {
+  const props = useSearchParams();
   return (
     <main className="flex flex-1 p-6">
       <Title text="Deputado" />
@@ -16,9 +20,15 @@ export default function Deputado() {
             alt={`Deputado`}
           />
           <div className="flex flex-col gap-1">
-            <strong className="font-semibold text-2xl">Fulano da Silva</strong>
-            <span className="text-lg text-zinc-400">Partido: TF</span>
-            <span className="text-lg text-zinc-400">UF: RS</span>
+            <strong className="font-semibold text-2xl">
+              {props.get("nomeCivil")}
+            </strong>
+            <span className="text-lg text-zinc-400">{`Partido: ${props.get(
+              "siglaPartido"
+            )}`}</span>
+            <span className="text-lg text-zinc-400">{`UF: ${props.get(
+              "siglaUf"
+            )}`}</span>
           </div>
         </div>
         <div className="flex flex-col gap-6">

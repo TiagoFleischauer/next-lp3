@@ -29,7 +29,7 @@ export default function Home() {
           return (
             <Link
               key={deputado.id}
-              href="/deputado"
+              href={{ pathname: "/deputado", query: deputado }}
               className="bg-white/5 p-3 rounded-md flex flex-col gap-2 hover:bg-white/10"
             >
               <Image
