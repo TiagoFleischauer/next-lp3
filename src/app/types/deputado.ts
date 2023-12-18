@@ -1,6 +1,6 @@
 export type Deputado = {
   id: number;
-  nomeCivil: string;
+  nome: string;
   siglaPartido: string;
   siglaUf: string;
   urlFoto: string;
