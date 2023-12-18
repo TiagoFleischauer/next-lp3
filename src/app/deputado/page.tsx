@@ -32,30 +32,36 @@ export default function Deputado() {
   }, []);
 
   return (
-    <main className="flex flex-1 p-6">
+    <main className="flex flex-1 flex-col p-6">
       <Title text="Deputado" />
       <div className="flex flex-1 gap-24 justify-center items-center">
         {deputadoSelecionado ? (
           <>
-            <div className="flex flex-col gap-2 w-72 bg-white/5 p-3 rounded-md">
+            <div className="flex flex-col gap-2 w-64 bg-white/5 p-3 rounded-md">
               <Image
                 src="/test.jpg"
                 className="w-full"
                 width={256}
                 height={256}
-                alt={`Deputado ${deputadoSelecionado.nomeCivil}`}
+                alt={`Deputado ${deputadoSelecionado.nome}`}
               />
               <div className="flex flex-col gap-1">
                 <strong className="font-semibold text-2xl">
-                  {deputadoSelecionado.nomeCivil}
+                  {deputadoSelecionado.nome}
                 </strong>
                 <span className="text-lg text-zinc-400">{`Partido: ${deputadoSelecionado.siglaPartido}`}</span>
                 <span className="text-lg text-zinc-400">{`UF: ${deputadoSelecionado.siglaUf}`}</span>
               </div>
             </div>
             <div className="flex flex-col gap-6">
-              <Button label="Inscrever" path="" />
-              <Button label="Ver eventos" path="" color="SECONDARY" />
+              <Button
+                label="Inscrever"
+                href={{
+                  pathname: "/addToEvent",
+                  query: { id: deputadoSelecionado.id },
+                }}
+              />
+              <Button label="Ver eventos" href="" color="SECONDARY" />
             </div>
           </>
         ) : (

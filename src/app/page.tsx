@@ -14,6 +14,9 @@ export default function Home() {
     const data = await fetchDeputados();
     if (data && data.length > 0) {
       setDeputados(data);
+      for (const deputado of data) {
+        console.log(deputado.urlFoto);
+      }
     }
   }
 
@@ -37,13 +40,13 @@ export default function Home() {
                 className="bg-white/5 p-3 rounded-md flex flex-col gap-2 hover:bg-white/10"
               >
                 <Image
-                  src="/test.jpg"
+                  src={deputado.urlFoto}
                   className="w-full"
                   width={120}
                   height={120}
-                  alt={`Deputado ${deputado.nomeCivil}`}
+                  alt={`Deputado ${deputado.nome}`}
                 />
-                <strong className="font-semibold">{deputado.nomeCivil}</strong>
+                <strong className="font-semibold">{deputado.nome}</strong>
                 <span className="text-sm text-zinc-500">
                   {`${deputado.siglaPartido} | ${deputado.siglaUf}`}
                 </span>
