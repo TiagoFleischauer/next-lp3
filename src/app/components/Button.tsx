@@ -7,9 +7,17 @@ type Props = {
   label: string;
   color?: ColorProps;
   href: Url;
+  fullWidth?: boolean;
+  disabled?: boolean;
 };
 
-export function Button({ color = "PRIMARY", label, href }: Props) {
+export function Button({
+  color = "PRIMARY",
+  label,
+  href,
+  fullWidth = false,
+  disabled = false,
+}: Props) {
   const customColor =
     color === "PRIMARY"
       ? "bg-green-600 hover:bg-green-500"
@@ -18,7 +26,13 @@ export function Button({ color = "PRIMARY", label, href }: Props) {
   return (
     <Link
       href={href}
-      className={`flex h-16 w-36 rounded-md justify-center items-center ${customColor}`}
+      className={`flex h-16 ${
+        fullWidth ? "w-full" : "w-36"
+      } rounded-md justify-center items-center ${customColor} ${
+        disabled && "pointer-events-none bg-zinc-500"
+      }`}
+      aria-disabled={disabled}
+      tabIndex={disabled ? -1 : undefined}
     >
       <strong className="font-semibold text-lg">{label}</strong>
     </Link>
