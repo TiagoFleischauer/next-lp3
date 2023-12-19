@@ -7,7 +7,8 @@ import { Title } from "../components/Title";
 import { useEffect, useState } from "react";
 import { Deputado } from "../types/deputado";
 import { fetchDeputado } from "../utils";
-import { Link, Pencil, Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
+import Link from "next/link";
 
 export default function EventosDeputado() {
   const props = useSearchParams();
@@ -25,6 +26,8 @@ export default function EventosDeputado() {
     }
   }
 
+  async function handleDeleteEvent(id: number) {}
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -41,21 +44,28 @@ export default function EventosDeputado() {
                   key={evento.id}
                   className="bg-white/5 p-6 rounded-md flex gap-2 items-center justify-between"
                 >
-                  <strong className="text-lg">{evento.descricaoTipo}</strong>
+                  <strong className="text-lg overflow-hidden text-ellipsis">
+                    {evento.descricaoTipo}
+                  </strong>
                   <div className="flex gap-3">
                     <Link
-                      className="bg-blue-500 hover:bg-blue-400 p-3 rounded-md"
+                      className="bg-blue-500 hover:bg-blue-400 p-2 rounded-md"
                       href={""}
                     >
                       <Pencil />
                     </Link>
                     <Link
-                      className="bg-red-500 hover:bg-red-400 p-3 rounded-md"
+                      className="bg-red-500 hover:bg-red-400 p-2 rounded-md"
                       href={""}
                       onClick={() => {
-                        window
-                          .confirm("Are you sure you wish to delete this item?")
+                        const confirmed = window
+                          .confirm(
+                            "Tem certeza que deseja deletar esse evento?"
+                          )
                           .valueOf();
+                        if (confirmed) {
+                          handleDeleteEvent(evento.id);
+                        }
                       }}
                     >
                       <Trash2 />

@@ -40,7 +40,14 @@ export default function AddToEvent() {
           result.push(evento);
         }
       }
-      setEventos(result.filter((event) => !deputadoSelecionado?.eventos.find((eventoDeputado) => eventoDeputado.id === event.id)));
+      setEventos(
+        result.filter(
+          (event) =>
+            !deputadoSelecionado?.eventos.find(
+              (eventoDeputado) => eventoDeputado.id === event.id
+            )
+        )
+      );
     }
   }
 
@@ -111,6 +118,12 @@ export default function AddToEvent() {
               <Button
                 label="Inscrever"
                 onPress={{
+                  href: {
+                    pathname: "/eventosDeputado",
+                    query: {
+                      id: deputadoSelecionado.id,
+                    },
+                  },
                   onClick: handleAddToEvent,
                 }}
                 fullWidth
