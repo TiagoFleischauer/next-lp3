@@ -105,7 +105,14 @@ export default function AddToEvent() {
               )}
               <Button
                 label="Inscrever"
-                href=""
+                onPress={{
+                  href: {
+                    pathname: "/eventosDeputado",
+                    query: {
+                      id: deputadoSelecionado.id,
+                    },
+                  },
+                }}
                 fullWidth
                 color="SECONDARY"
                 disabled={!eventoSelecionado}
