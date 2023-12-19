@@ -43,6 +43,10 @@ export default function AddToEvent() {
     }
   }
 
+  function handleAddToEvent() {
+    console.log(eventoSelecionado);
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -106,12 +110,7 @@ export default function AddToEvent() {
               <Button
                 label="Inscrever"
                 onPress={{
-                  href: {
-                    pathname: "/eventosDeputado",
-                    query: {
-                      id: deputadoSelecionado.id,
-                    },
-                  },
+                  onClick: handleAddToEvent,
                 }}
                 fullWidth
                 color="SECONDARY"

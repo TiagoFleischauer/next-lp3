@@ -52,6 +52,11 @@ export default function EventosDeputado() {
                     <Link
                       className="bg-red-500 hover:bg-red-400 p-3 rounded-md"
                       href={""}
+                      onClick={() => {
+                        window
+                          .confirm("Are you sure you wish to delete this item?")
+                          .valueOf();
+                      }}
                     >
                       <Trash2 />
                     </Link>
