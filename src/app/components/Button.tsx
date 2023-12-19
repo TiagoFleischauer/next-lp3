@@ -6,7 +6,10 @@ type ColorProps = "PRIMARY" | "SECONDARY";
 type Props = {
   label: string;
   color?: ColorProps;
-  href: Url;
+  onPress: {
+    href?: Url;
+    onClick?(): void;
+  };
   fullWidth?: boolean;
   disabled?: boolean;
 };
@@ -14,7 +17,7 @@ type Props = {
 export function Button({
   color = "PRIMARY",
   label,
-  href,
+  onPress,
   fullWidth = false,
   disabled = false,
 }: Props) {
@@ -23,9 +26,11 @@ export function Button({
       ? "bg-green-600 hover:bg-green-500"
       : "bg-sky-600 hover:bg-sky-500";
 
+  const { href, onClick } = onPress;
+
   return (
     <Link
-      href={href}
+      href={href ? href : ""}
       className={`flex h-16 ${
         fullWidth ? "w-full" : "w-36"
       } rounded-md justify-center items-center ${customColor} ${
@@ -33,6 +38,7 @@ export function Button({
       }`}
       aria-disabled={disabled}
       tabIndex={disabled ? -1 : undefined}
+      onClick={onClick}
     >
       <strong className="font-semibold text-lg">{label}</strong>
     </Link>
