@@ -39,7 +39,7 @@ export default function Deputado() {
           <>
             <div className="flex flex-col gap-2 w-64 bg-white/5 p-3 rounded-md">
               <Image
-                src="/test.jpg"
+                src={deputadoSelecionado.urlFoto}
                 className="w-full"
                 width={256}
                 height={256}
@@ -56,12 +56,25 @@ export default function Deputado() {
             <div className="flex flex-col gap-6">
               <Button
                 label="Inscrever"
-                href={{
-                  pathname: "/addToEvent",
-                  query: { id: deputadoSelecionado.id },
+                onPress={{
+                  href: {
+                    pathname: "/addToEvent",
+                    query: { id: deputadoSelecionado.id },
+                  },
                 }}
               />
-              <Button label="Ver eventos" href="" color="SECONDARY" />
+              <Button
+                label="Ver eventos"
+                onPress={{
+                  href: {
+                    pathname: "/eventosDeputado",
+                    query: {
+                      id: deputadoSelecionado.id,
+                    },
+                  },
+                }}
+                color="SECONDARY"
+              />
             </div>
           </>
         ) : (
