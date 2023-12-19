@@ -7,16 +7,9 @@ export function Sidebar() {
       <nav className="space-y-6">
         <Link
           href="/"
-          className="flex items-center gap-2 text-xl font-semibold text-zinc-200"
+          className="flex items-center gap-2 text-3xl font-semibold text-zinc-200"
         >
           Câmara LP3
-        </Link>
-        <Link
-          href=""
-          className="flex items-center gap-2 text-base font-semibold text-zinc-200"
-        >
-          <CalendarDays />
-          Eventos
         </Link>
       </nav>
     </aside>

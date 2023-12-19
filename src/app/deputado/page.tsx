@@ -34,11 +34,13 @@ export default function Deputado() {
 
   return (
     <main className="flex flex-1 flex-col p-6">
-      <Title text="Deputado" />
+      {deputadoSelecionado && (
+        <Title text={`Deputado ${deputadoSelecionado?.nome}`} />
+      )}
       <div className="flex flex-1 gap-24 justify-center items-center">
         {deputadoSelecionado ? (
           <>
-            <div className="flex flex-col gap-2 w-64 bg-white/5 p-3 rounded-md">
+            <div className="flex flex-col gap-2 w-72 bg-white/5 p-3 rounded-md">
               <img
                 src={deputadoSelecionado.urlFoto}
                 className="w-full"
