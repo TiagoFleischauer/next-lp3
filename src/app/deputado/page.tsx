@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
@@ -38,7 +39,7 @@ export default function Deputado() {
         {deputadoSelecionado ? (
           <>
             <div className="flex flex-col gap-2 w-64 bg-white/5 p-3 rounded-md">
-              <Image
+              <img
                 src={deputadoSelecionado.urlFoto}
                 className="w-full"
                 width={256}

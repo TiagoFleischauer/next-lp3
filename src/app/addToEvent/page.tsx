@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
@@ -62,8 +63,8 @@ export default function AddToEvent() {
         {deputadoSelecionado ? (
           <>
             <div className="flex flex-col gap-2 w-72 bg-white/5 p-3 rounded-md">
-              <Image
-                src="/test.jpg"
+              <img
+                src={deputadoSelecionado.urlFoto}
                 className="w-full"
                 width={256}
                 height={256}

@@ -6,6 +6,7 @@ import { Footer } from "./components/Footer";
 export const metadata: Metadata = {
   title: "Câmara LP3",
   description: "Câmara de Deputados LP3",
+  referrer: "no-referrer",
 };
 
 export default function RootLayout({

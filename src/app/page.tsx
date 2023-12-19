@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
@@ -39,7 +40,7 @@ export default function Home() {
                 }}
                 className="bg-white/5 p-3 rounded-md flex flex-col gap-2 hover:bg-white/10"
               >
-                <Image
+                <img
                   src={deputado.urlFoto}
                   className="w-full"
                   width={120}
