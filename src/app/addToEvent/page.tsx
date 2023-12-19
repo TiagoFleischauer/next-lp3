@@ -40,7 +40,7 @@ export default function AddToEvent() {
           result.push(evento);
         }
       }
-      setEventos(result);
+      setEventos(result.filter((event) => !deputadoSelecionado?.eventos.find((eventoDeputado) => eventoDeputado.id === event.id)));
     }
   }
 
