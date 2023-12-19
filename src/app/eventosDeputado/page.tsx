@@ -7,6 +7,7 @@ import { Title } from "../components/Title";
 import { useEffect, useState } from "react";
 import { Deputado } from "../types/deputado";
 import { fetchDeputado } from "../utils";
+import { Link, Pencil, Trash2 } from "lucide-react";
 
 export default function EventosDeputado() {
   const props = useSearchParams();
@@ -33,16 +34,28 @@ export default function EventosDeputado() {
       {deputadoSelecionado && deputadoSelecionado.eventos.length > 0 ? (
         <>
           <Title text={`Eventos de ${deputadoSelecionado.nome}`} />
-          <div className="grid grid-cols-8 gap-4 mt-4">
+          <div className="grid grid-cols-5 gap-4 mt-4">
             {deputadoSelecionado.eventos.map((evento) => {
               return (
                 <div
                   key={evento.id}
-                  className="bg-white/5 p-3 rounded-md flex flex-col gap-2 hover:bg-white/10"
+                  className="bg-white/5 p-6 rounded-md flex gap-2 items-center justify-between"
                 >
-                  <strong className="font-semibold">
-                    {evento.descricaoTipo}
-                  </strong>
+                  <strong className="text-lg">{evento.descricaoTipo}</strong>
+                  <div className="flex gap-3">
+                    <Link
+                      className="bg-blue-500 hover:bg-blue-400 p-3 rounded-md"
+                      href={""}
+                    >
+                      <Pencil />
+                    </Link>
+                    <Link
+                      className="bg-red-500 hover:bg-red-400 p-3 rounded-md"
+                      href={""}
+                    >
+                      <Trash2 />
+                    </Link>
+                  </div>
                 </div>
               );
             })}
