@@ -49,3 +49,17 @@ export async function addEventToDeputado(evento: string, idDeputado: number) {
     console.log(error);
   }
 }
+
+export async function deleteEvent(idEvento: number) {
+  try {
+    const response = await fetch(`${url}/eventos/${idEvento}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}

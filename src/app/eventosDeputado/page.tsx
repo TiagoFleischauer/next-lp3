@@ -6,17 +6,17 @@ import { useSearchParams } from "next/navigation";
 import { Title } from "../components/Title";
 import { useEffect, useState } from "react";
 import { Deputado } from "../types/deputado";
-import { fetchDeputado } from "../utils";
+import { deleteEvent, fetchDeputado } from "../utils";
 import { Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 
 export default function EventosDeputado() {
   const props = useSearchParams();
 
+  const idDeputado = props.get("id");
   const [deputadoSelecionado, setDeputadoSelecionado] = useState<Deputado>();
 
   async function fetchData() {
-    const idDeputado = props.get("id");
     if (!idDeputado) {
       return;
     }
@@ -26,7 +26,10 @@ export default function EventosDeputado() {
     }
   }
 
-  async function handleDeleteEvent(id: number) {}
+  async function handleDeleteEvent(id: number) {
+    await deleteEvent(id);
+    await fetchData();
+  }
 
   useEffect(() => {
     fetchData();
