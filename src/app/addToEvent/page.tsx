@@ -2,9 +2,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import Image from "next/image";
 
 import { Title } from "../components/Title";
 
@@ -58,7 +57,7 @@ export default function AddToEvent() {
     }
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetchData();
   }, []);
 

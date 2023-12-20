@@ -4,7 +4,7 @@
 import { useSearchParams } from "next/navigation";
 
 import { Title } from "../components/Title";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { Deputado } from "../types/deputado";
 import { deleteEvent, fetchDeputado } from "../utils";
 import { Pencil, Trash2 } from "lucide-react";
@@ -31,7 +31,7 @@ export default function EventosDeputado() {
     await fetchData();
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetchData();
   }, []);
 

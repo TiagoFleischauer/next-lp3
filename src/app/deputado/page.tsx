@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
 
@@ -28,7 +28,7 @@ export default function Deputado() {
     }
   }
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     fetchData();
   }, []);
 
