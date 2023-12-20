@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { Title } from "../components/Title";
 import { useLayoutEffect, useState } from "react";
 import { Deputado } from "../types/deputado";
-import { deleteEvent, fetchDeputado } from "../utils";
+import { deleteEvent, editEvent, fetchDeputado } from "../utils";
 import { Pencil, Trash2 } from "lucide-react";
 import Link from "next/link";
 
@@ -31,6 +31,14 @@ export default function EventosDeputado() {
     await fetchData();
   }
 
+  async function handleEditEvent(id: number, newName: string | null) {
+    if (!newName) {
+      return;
+    }
+    await editEvent(id, newName);
+    await fetchData();
+  }
+
   useLayoutEffect(() => {
     fetchData();
   }, []);
@@ -51,15 +59,20 @@ export default function EventosDeputado() {
                     {evento.descricaoTipo}
                   </strong>
                   <div className="flex gap-3">
-                    <Link
+                    <button
                       className="bg-blue-500 hover:bg-blue-400 p-2 rounded-md"
-                      href={""}
+                      onClick={() => {
+                        const newValue = window.prompt(
+                          "Digite um novo nome para o evento",
+                          evento.descricaoTipo
+                        );
+                        handleEditEvent(evento.id, newValue);
+                      }}
                     >
                       <Pencil />
-                    </Link>
-                    <Link
+                    </button>
+                    <button
                       className="bg-red-500 hover:bg-red-400 p-2 rounded-md"
-                      href={""}
                       onClick={() => {
                         const confirmed = window
                           .confirm(
@@ -72,7 +85,7 @@ export default function EventosDeputado() {
                       }}
                     >
                       <Trash2 />
-                    </Link>
+                    </button>
                   </div>
                 </div>
               );

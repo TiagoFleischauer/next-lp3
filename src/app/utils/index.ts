@@ -63,3 +63,18 @@ export async function deleteEvent(idEvento: number) {
     console.log(error);
   }
 }
+
+export async function editEvent(idEvento: number, newName: string) {
+  try {
+    const response = await fetch(`${url}/eventos/${idEvento}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: idEvento, descricaoTipo: newName }),
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
