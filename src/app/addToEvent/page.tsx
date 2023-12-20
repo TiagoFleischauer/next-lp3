@@ -9,7 +9,7 @@ import Image from "next/image";
 import { Title } from "../components/Title";
 
 import { Deputado } from "../types/deputado";
-import { fetchDeputado, fetchEventos } from "../utils";
+import { addEventToDeputado, fetchDeputado, fetchEventos } from "../utils";
 import { Event } from "../types/event";
 import { Button } from "../components/Button";
 
@@ -43,25 +43,24 @@ export default function AddToEvent() {
       setEventos(
         result.filter(
           (event) =>
-            !deputadoSelecionado?.eventos.find(
-              (eventoDeputado) => eventoDeputado.id === event.id
+            !data?.eventos.find(
+              (eventoDeputado) =>
+                eventoDeputado.descricaoTipo === event.descricaoTipo
             )
         )
       );
     }
   }
 
-  function handleAddToEvent() {
-    console.log(eventoSelecionado);
+  async function handleAddToEvent() {
+    if (deputadoSelecionado) {
+      await addEventToDeputado(eventoSelecionado, deputadoSelecionado.id);
+    }
   }
 
   useEffect(() => {
     fetchData();
   }, []);
-
-  useEffect(() => {
-    console.log(eventoSelecionado);
-  }, [eventoSelecionado]);
 
   return (
     <main className="flex flex-1 flex-col p-6">
@@ -103,7 +102,7 @@ export default function AddToEvent() {
                       <option
                         key={evento.id}
                         className="bg-zinc-200"
-                        value={evento.id}
+                        value={JSON.stringify(evento)}
                       >
                         {evento.descricaoTipo}
                       </option>

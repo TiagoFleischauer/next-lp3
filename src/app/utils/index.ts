@@ -34,3 +34,18 @@ export async function fetchEventos(): Promise<Event[] | undefined> {
     console.log(error);
   }
 }
+
+export async function addEventToDeputado(evento: string, idDeputado: number) {
+  try {
+    const response = await fetch(`${url}/${idDeputado}/eventos`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: evento,
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
